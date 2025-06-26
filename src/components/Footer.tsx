@@ -24,15 +24,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-orange-500" />
-                <span className="text-gray-400">123 Food Street, City, State 12345</span>
+                <span className="text-gray-400">Pernambut , Vellore District - 635810 , Tamil Nadu , India</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-orange-500" />
-                <span className="text-gray-400">(555) 123-4567</span>
+                <span className="text-gray-400">+91 8667530700</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-orange-500" />
-                <span className="text-gray-400">info@burgerpalace.com</span>
+                <span className="text-gray-400">anzarcolan@gmail.com</span>
               </div>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function Footer() {
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 Burger Palace. All rights reserved.
+            © 2020 Burger Palace Joint venture of Unique Taste. All rights reserved.
           </p>
         </div>
       </div>
