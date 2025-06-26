@@ -53,14 +53,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .single()
-      
-      if (error) throw error
-      setProfile(data)
+        .single();
+
+      if (error && error.code === 'PGRST116') { // Not found
+        // Try to get user info from auth
+        const { data: userData } = await supabase.auth.getUser();
+        const user = userData?.user;
+        // Create a new profile if not found
+        const { data: newProfile } = await supabase.from('profiles').insert([
+          {
+            id: userId,
+            email: user?.email || '',
+            full_name: user?.user_metadata?.full_name || '',
+            is_admin: false
+          }
+        ]).select().single();
+        setProfile(newProfile);
+      } else if (data) {
+        setProfile(data);
+      }
     } catch (error) {
-      console.error('Error fetching profile:', error)
+      console.error('Error fetching profile:', error);
     }
-  }
+  };
 
   const signIn = async (email: string, password: string) => {
     return await supabase.auth.signInWithPassword({ email, password })
